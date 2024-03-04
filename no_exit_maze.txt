@@ -2,4 +2,6 @@
 #S   #
 # ## #
 #  # #
+#    #
 ######
+no exit character INVALID MAZE
