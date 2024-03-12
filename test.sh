@@ -12,7 +12,7 @@ echo -e "Argument tests"
 # testing no file argument entered
 echo -n "Testing no arguments - "
 ./maze  > tmp
-if grep -q "Error: No arguments provided" tmp;
+if grep -q "mazeGame <filename>"" tmp;
  then
     echo "PASS"
 else
@@ -22,7 +22,7 @@ fi
 # excess file arguments entered tested 
 
 echo -n "Testing two arguments -"t
-./maze x x > out
+./mazeGame a b > tmp
 if grep -q 
 then
     echo "PASS"
@@ -31,8 +31,6 @@ else
 fi
 
 echo -e "File tests"
-
-
 # testing when the file doesn't not exist in repository 
 
 echo -n "Testing the file exists -"
