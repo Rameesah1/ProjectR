@@ -1,6 +1,7 @@
 #!/bin/bash
-# removing read permissions from this file 
-chmod -r data/bad_perms.txt
+
+# removed read permissions from this file 
+chmod -r data/bad_perms.txt 
 
 gcc mazeGame.c -o mazeGame
 
@@ -43,6 +44,15 @@ else
     echo "FAIL"
 fi
 
+echo -n "Testing bad permissions - "
+timeout 0.2s ./mazeGame data/bad_perms.txt > tmp
+if grep -q "Error: Bad filename" tmp; 
+then
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
 # testing for a non existent file in the repository
 
 echo -n "Testing the file exists -"
@@ -53,3 +63,10 @@ then
 else
     echo "FAIL"
 fi
+
+#empty file
+
+if [ ! -s /workspaces/ProjectR/data/emptyfile.txt ]; then
+echo "The maze cannot load as the file 'emptyfile.txt' is empty."
+fi
+
