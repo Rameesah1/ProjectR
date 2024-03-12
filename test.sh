@@ -12,7 +12,7 @@ echo -e "Argument tests"
 # testing no file argument entered
 echo -n "Testing no arguments - "
 ./maze  > tmp
-if grep -q "mazeGame <filename>"" tmp;
+if grep -q "mazeGame <filename>" tmp;
 then
     echo "PASS"
 else
@@ -34,7 +34,7 @@ echo -e "File tests"
  
 # testing file format
 
-echo -n "Testing invalid file type - "
+echo -n "Testing an invalid file type - "
 timeout 0.2s ./mazeGame data/invalidfiletype.pdf > tmp
 if grep -q "Error : Wrong file format" tmp;
 then
