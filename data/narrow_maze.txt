@@ -1,2 +1,1 @@
-S##E
-width and height less than 5 INVALID MAZE
+#SE#
