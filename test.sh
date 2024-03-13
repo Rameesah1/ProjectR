@@ -12,7 +12,7 @@ echo -e "Argument tests"
 
 # testing no file argument entered
 echo -n "Testing no arguments - "
-./maze  > tmp
+./mazeGame  > tmp
 if grep -q "mazeGame <filename>" tmp;
 then
     echo "PASS"
@@ -70,3 +70,11 @@ if [ ! -s /workspaces/ProjectR/data/emptyfile.txt ]; then
 echo "The maze cannot load as the file 'emptyfile.txt' is empty."
 fi
 
+echo -n "Testing bad data (missing) - "
+timeout 0.2s ./mazeGame data/bad_data_missing.csv > tmp
+if grep -q "Error: CSV file does not have expected format" tmp;
+then
+    echo "PASS"
+else
+    echo "FAIL"
+fi

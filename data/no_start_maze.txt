@@ -3,4 +3,3 @@
 # ## #
 #  #E#
 ######
-no start sign INVALID MAZE 

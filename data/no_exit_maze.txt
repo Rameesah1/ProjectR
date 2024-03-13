@@ -4,4 +4,3 @@
 #  # #
 #    #
 ######
-no exit character INVALID MAZE
