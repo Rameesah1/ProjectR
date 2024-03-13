@@ -4,5 +4,4 @@
 ####  ##
 # ###  #
 # E   ##
-########
-IRREGULAR WIDTH INVALID MAZE
+############

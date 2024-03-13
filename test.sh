@@ -7,10 +7,7 @@ gcc mazeGame.c -o mazeGame
 
 echo -e "Argument tests"
 
-# no file argument entered tested 
-echo -e "Argument tests"
-
-# testing no file argument entered
+# Testing no file argument entered
 echo -n "Testing no arguments - "
 ./mazeGame  > tmp
 if grep -q "mazeGame <filename>" tmp;
@@ -20,9 +17,8 @@ else
     echo "FAIL"
 fi
 
-# excess file arguments entered tested
-
-echo -n "Testing two arguments -"t
+# Testing excess file arguments entered 
+echo -n "Testing two arguments -"
 ./mazeGame a b > tmp
 if grep -q 
 then
@@ -31,9 +27,9 @@ else
     echo "FAIL"
 fi
 
-echo -e "File tests"
+echo -e "\n~~ File Handling~~"
  
-# testing File Handling
+# Testing File Handling
 
 echo -n "Testing an invalid file type - "
 timeout 0.2s ./mazeGame data/invalidfiletype.pdf > tmp
@@ -53,7 +49,7 @@ else
     echo "FAIL"
 fi
 
-# testing for a non existent file in the repository
+# Testing for a non existent file in the repository
 
 echo -n "Testing the file exists -"
 ./mazeGame non_existent_file.txt > tmp
@@ -64,13 +60,13 @@ else
     echo "FAIL"
 fi
 
-#empty file
+# Testing an empty file
 
 if [ ! -s /workspaces/ProjectR/data/emptyfile.txt ]; then
 echo "The maze cannot load as the file 'emptyfile.txt' is empty."
 fi
 
-#testing for missing data 
+# Testing for missing data 
 
 echo -n "Testing bad data (Start sign missing) - "
 timeout 0.2s ./mazeGame data/no_start_maze.txt > tmp
@@ -112,6 +108,76 @@ echo -n "Incorrect characters in the maze - "
 timeout 0.2s ./mazeGame data/incorrect_characters_maze.txt > tmp
 if grep -q "Error: Maze file does not have correct format" tmp;
 then
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
+# Testing if the height of the maze file is above the maximum range
+echo -n "Testing bad data ( Exceeding Height range ) - "
+timeout 0.2s ./mazeGame data/exceeding_height_maze.txt > tmp
+if grep -q "Error: File does not have the expected format" tmp;
+then 
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
+# Testing if the width of the file is above the maximum range
+echo -n "Testing bad data ( Exceeding Width range ) - "
+timeout 0.2s ./mazeGame data/exceeding_width_maze.txt > tmp
+if grep -q "Error: File does not have the expected format" tmp;
+then 
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
+# Testing if the height of the maze data is below the minimum range
+echo -n "Testing bad data ( Below Height range ) - "
+timeout 0.2s ./mazeGame data/below_minHeightmaze.txt > tmp
+if grep -q "Error: File does not have the expected format" tmp;
+then 
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
+# Testing if the width of the maze data is below the mimimum range
+echo -n "Testing bad data ( Below width range ) - "
+timeout 0.2s ./mazeGame data/below_minWidthmaze.txt > tmp
+if grep -q "Error: File does not have the expected format" tmp;
+then 
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
+# Testing if the maze data has irregular height
+echo -n "Testing Bad Data ( Irregular height ) - "
+timeout 0.2s ./mazeGame data/height_irregular_maze.txt > tmp
+if grep -q "Error: File does not have the expected format" tmp;
+then 
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
+# Testing if the maze data has irregular width
+echo -n "Testing Bad Data ( Irregular width ) - "
+timeout 0.2s ./mazeGame data/width_irregular_maze.txt > tmp
+if grep -q "Error: File does not have the expected format" tmp;
+then 
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
+# Testing if the maze data file has a rectangular shape
+echo -n "Testing Bad Data ( Non-Rectangular maze ) - "
+timeout 0.2s ./mazeGame data/non_rectangular_maze.txt > tmp
+if grep -q "Error: Maze data is not rectangular" tmp;
+then 
     echo "PASS"
 else
     echo "FAIL"
