@@ -182,3 +182,29 @@ then
 else
     echo "FAIL"
 fi
+
+echo -e "\n~~ Testing Inputs~~"
+
+echo -n "User gives no input/Just presses enter - "
+echo "" | timeout 0.2s ./mazeGame data/5x5_standard_maze.txt > tmp
+if grep -q "Error: Invalid input." tmp;
+then
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
+# Testing for a collision in a wall
+
+echo -n "User inputs 'A' into wall - "
+echo "A" | timeout 0.2s ./mazeGame data/stuck_maze.txt > tmp
+if grep -q "Movement Blocked. You have hit a wall. Try a different direction." tmp;
+then
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
+
+
+
