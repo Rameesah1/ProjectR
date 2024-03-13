@@ -33,7 +33,7 @@ fi
 
 echo -e "File tests"
  
-# testing file format
+# testing File Handling
 
 echo -n "Testing an invalid file type - "
 timeout 0.2s ./mazeGame data/invalidfiletype.pdf > tmp
@@ -70,9 +70,47 @@ if [ ! -s /workspaces/ProjectR/data/emptyfile.txt ]; then
 echo "The maze cannot load as the file 'emptyfile.txt' is empty."
 fi
 
-echo -n "Testing bad data (missing) - "
-timeout 0.2s ./mazeGame data/bad_data_missing.csv > tmp
-if grep -q "Error: CSV file does not have expected format" tmp;
+#testing for missing data 
+
+echo -n "Testing bad data (Start sign missing) - "
+timeout 0.2s ./mazeGame data/no_start_maze.txt > tmp
+if grep -q "Error: File does not have expected format" tmp;
+then
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
+echo -n "Testing bad data (End sign missing) - "
+timeout 0.2s ./mazeGame data/no_exit_maze.txt > tmp
+if grep -q "Error: File does not have expected format" tmp;
+then
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
+echo -n "More than one Start sign in file - "
+timeout 0.2s ./mazeGame data/excess_S_maze.txt > tmp
+if grep -q "Error: File does not have correct format" tmp;
+then
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
+echo -n "More than one Exit sign in file - "
+timeout 0.2s ./mazeGame data/excess_E_maze.txt > tmp
+if grep -q "Error: File does not have correct format" tmp;
+then
+    echo "PASS"
+else
+    echo "FAIL"
+fi
+
+echo -n "Incorrect characters in the maze - "
+timeout 0.2s ./mazeGame data/incorrect_characters_maze.txt > tmp
+if grep -q "Error: Maze file does not have correct format" tmp;
 then
     echo "PASS"
 else
