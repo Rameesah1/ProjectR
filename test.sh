@@ -320,7 +320,7 @@ else
 fi
 
 # Testing the access of the map 
-echo -n " Testing User inputs 'M' to open the map - "
+echo -n "Testing User inputs 'M' to open the map - "
 echo "M" | timeout 0.2s  ./maze data/16x8_maze.txt > tmp
 if grep -q "Map:" tmp;
 then
