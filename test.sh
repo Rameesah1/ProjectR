@@ -21,7 +21,7 @@ fi
 # Testing excess file arguments entered 
 echo -n "Testing two arguments -"
 ./maze a b > tmp
-if grep -q "Usage: studentData <filename>" tmp;
+if grep -q "Usage: maze <filename>" tmp;
 then
     echo "PASS"
 else
