@@ -261,7 +261,7 @@ else
     echo "FAIL"
 fi
 
-# Testing for invalid characters input 
+# Testing for invalid characters input by by redirecting input from 'inputs/invalid_inputs.in' to the program, simulating user input from a file instead of the keyboard.
 echo -n "Testing a maze that has invalid characters - "
 ./maze data/5x5_standard_maze.txt < inputs/invalid_inputs.in > tmp
 if grep -q "Error: Invalid command. Please use W, A, S, D to navigate the maze." tmp;
@@ -271,7 +271,7 @@ else
     echo "FAIL"
 fi
 
-# Testing for a collision in a wall. The player is assumed to be at the start position and any movement using WASDM is blocked as there are walls everywhere. 
+# Pipes the one of the 'WASD' inputs to simulate a user movement command, checking for an appropriate error message when hitting a wall. 
 
 echo -n "User inputs 'A' into wall - "
 echo "A" | timeout 0.2s ./maze data/stuck_maze.txt > tmp
