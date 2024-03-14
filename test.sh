@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# removed read permissions from a maze file to test for bad permissions
+# Removed read permissions from a maze file to test for bad permissions
 chmod -r data/bad_perms.txt 
 
-#Complile the skeleton code
+# Complile the skeleton code
 gcc maze.c -o maze
 
 echo -e "Argument tests"
@@ -254,7 +254,7 @@ fi
 # Testing when user enters valid inputs
 echo -n "Testing valid user inputs characters - "
 timeout 0.2s ./maze inputs/valid_user_inputs.in > tmp
-if grep -q "Success: Valid charcters entered." tmp;
+if grep -q "Success: Valid characters entered." tmp;
 then
     echo "PASS"
 else 
