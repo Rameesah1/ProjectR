@@ -1,6 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//defines
+#define MAX_DIM 100
+#define MIN_DIM 5
+
+// defines for the required autograder exit codes
+#define EXIT_SUCCESS 0
+#define EXIT_ARG_ERROR 1
+#define EXIT_FILE_ERROR 2
+#define EXIT_MAZE_ERROR 3
+
+
 // Created a Struct for a Maze game file which includes its layout and dimensions 
 typedef struct { 
     int numberRows;  //stores the number of rows in the maze file
