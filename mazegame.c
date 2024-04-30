@@ -1,10 +1,11 @@
+// mazegame.c
 #include "sample.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>  // For the tolower function
+#include <ctype.h>
 
 void validateMaze(Maze *maze) {
-    // Add validation logic here
+    // Validation logic goes here
 }
 
 void startGame(Maze *maze) {
@@ -48,3 +49,4 @@ void endGame(Maze *maze) {
     // Clean up logic
     printf("Thanks for playing!\n");
 }
+
