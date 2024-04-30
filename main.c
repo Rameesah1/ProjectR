@@ -1,4 +1,6 @@
-#include "maze.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "sample.h"
 
 int main(int argc, char *argv[]) {
     // Ensure the correct number of command-line arguments are provided.
@@ -9,21 +11,39 @@ int main(int argc, char *argv[]) {
 
     // Try to open the specified file; exit with an error if it fails.
     FILE *file = fopen(argv[1], "r");
-    if (!file) {
-        perror("Error opening file");
+    if ( file == null) {
+        printf("Error opening file");
         return EXIT_FILE_ERROR;
     }
 
     // Allocate memory for the maze structure and attempt to initialize it.
-    maze *m = malloc(sizeof(maze));
+    maze *maze_data = malloc(sizeof(maze));
+
     if (!create_maze(m, MAX_DIM, MIN_DIM)) {  // Initialize maze with predefined maximum and minimum dimensions.
         printf("Failed to create maze\n");
         fclose(file);
-        free(m);
+        free(m);  //for memory leaks 
         return EXIT_MAZE_ERROR;
     }
 
+    
+
+   // FILE *file;
+
+/* Open a file in read mode
+file = fopen("loremipsum.txt", "r");
+
+// Print some text if the file does not exist
+if(file == NULL) {
+  printf("Not able to open the file.");
+}
+
+// Close the file
+fclose(fptr);
+*/ 
+
     // Read the maze structure from the file; handle failure to read.
+    read_maze(argv[1], maze_data);
    
     
     // Close the file as it is no longer needed after loading the maze.

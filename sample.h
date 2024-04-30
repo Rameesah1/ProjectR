@@ -9,21 +9,29 @@
 #define EXIT_FILE_ERROR 2
 #define EXIT_MAZE_ERROR 3
 
-typedef struct {
-    int numberRows;
-    int numberColumns;
-    char maze[100][100];
-} mazeGame;
+typedef struct __Maze
+{
+    char **map;
+    int height;
+    int width;
+    coord start;
+    coord end;
+} maze;
 
-typedef struct {
-    int x_pos;
-    int y_pos;
-} playerPosition;
+typedef struct __Coord
+{
+    int x;
+    int y;
+} coord;
 
 void validateMaze(void);
+
 void startGame(void);
+
 void initializePlayer(void);
+
 void playGame(void);
+
 void endGame(void);
 
 #endif // MAZE_H
