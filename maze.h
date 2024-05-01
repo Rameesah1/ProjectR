@@ -1,6 +1,7 @@
-// sample.h
-#ifndef SAMPLE_H
-#define SAMPLE_H
+//maze.h
+#ifndef MAZE_H
+#define MAZE_H
+#include <stdio.h>
 
 #define EXIT_SUCCESS 0
 #define EXIT_ARG_ERROR 1
@@ -25,5 +26,6 @@ void startGame(Maze *maze);
 void initializePlayer(Maze *maze, Coord *player);
 void playGame(Maze *maze, Coord *player);
 void endGame(Maze *maze);
+int read_maze(Maze *maze, FILE *file);
 
-#endif  // SAMPLE_H
+#endif  

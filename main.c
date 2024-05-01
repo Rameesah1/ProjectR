@@ -1,8 +1,8 @@
-// main.c
+//main.c
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "sample.h"
+#include "maze.h"
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 
     fclose(file);
 
-    validateMaze(maze); // Validate the maze after it's loaded
+    validateMaze(maze); // Validates the maze after it's loaded
     Coord player;
     initializePlayer(maze, &player); // Initialize the player at the start position
     startGame(maze); // Any initial game setup can be done here
@@ -42,6 +42,11 @@ int main(int argc, char *argv[]) {
 
     endGame(maze); // Clean up and final messages
 
+    
+
     free(maze);
     return EXIT_SUCCESS;
 }
+
+
+
