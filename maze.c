@@ -108,3 +108,4 @@ void endGame(Maze *maze) {
     // Clean up logic
     printf("Thanks for playing!\n");
 }
+maze.c

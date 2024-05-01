@@ -1,16 +1,21 @@
-CC=gcc
-CFLAGS=-Wall -g
+CC = gcc
+CFLAGS = -Wall -g
 
-all: maze
+# Target executable name
+TARGET = maze_game
 
-maze: main.o maze.o
-	$(CC) $(CFLAGS) -o maze main.o maze.o
+all: $(TARGET)
 
-main.o: main.c sample.h
+$(TARGET): main.o maze.o
+	$(CC) $(CFLAGS) -o $(TARGET) main.o maze.o
+
+main.o: main.c maze.h
 	$(CC) $(CFLAGS) -c main.c
 
-maze.o: mazegame.c sample.h
-	$(CC) $(CFLAGS) -c mazegame.c
+maze.o: maze.c maze.h
+	$(CC) $(CFLAGS) -c maze.c
 
 clean:
-	rm -f *.o maze
+	rm -f *.o $(TARGET)
+
+.PHONY: all clean
